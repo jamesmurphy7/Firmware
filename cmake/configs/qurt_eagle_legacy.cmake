@@ -4,9 +4,10 @@
 # the DSP side.
 
 # The config between different QURT builds is shared.
-include(configs/qurt_sdflight_legacy)
-add_definitions(
-   -D__USING_SNAPDRAGON_LEGACY_DRIVER
-   -D__PX4_QURT
-   -D__PX4_QURT_EAGLE
-   )
+include(configs/qurt_eagle_default)
+
+add_definitions(-D__USING_SNAPDRAGON_LEGACY_DRIVER)
+
+list(config_module_list APPEND
+	platforms/qurt/fc_addon/uart_esc
+)
